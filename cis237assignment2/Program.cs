@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Jeffrey Martin
+//CIS 237 Advanced C#
+//Due 10-4-2016
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +20,13 @@ namespace cis237assignment2
         /// <param name="args"></param>
         static void Main(string[] args)
         {
+
+            //***********************************
+            //Instanciating classes
+            //***********************************
+
+            UserInterface ui = new UserInterface();
+
             /// <summary>
             /// Starting Coordinates.
             /// </summary>
@@ -56,6 +67,8 @@ namespace cis237assignment2
 
             //Solve the transposed maze.
             mazeSolver.SolveMaze(maze2, X_START, Y_START);
+
+            ui.PrintCompleteMaze(maze1);
 
         }
 

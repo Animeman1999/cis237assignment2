@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Jeffrey Martin
+//CIS 237 Advanced C#
+//Due 10-4-2016
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
