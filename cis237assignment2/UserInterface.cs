@@ -35,5 +35,11 @@ namespace cis237assignment2
             Console.BufferHeight = Int16.MaxValue - 1;
             Console.WriteLine("Maze Bot");
         }
+
+        public void Pause()
+        {
+            Console.WriteLine("Press any key to continue. . .");
+            ConsoleKeyInfo inputChar = Console.ReadKey();
+        }
     }
 }

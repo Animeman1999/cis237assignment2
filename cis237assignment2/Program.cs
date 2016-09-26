@@ -24,7 +24,7 @@ namespace cis237assignment2
             //***********************************
             //Instanciating classes
             //***********************************
-
+            UserInterface ui = new UserInterface();
 
             /// <summary>
             /// Starting Coordinates.
@@ -64,8 +64,10 @@ namespace cis237assignment2
             /// </summary>
             mazeSolver.SolveMaze(maze1, X_START, Y_START);
 
+            ui.Pause();
+
             //Solve the transposed maze.
-         //   mazeSolver.SolveMaze(maze2, X_START, Y_START);
+            mazeSolver.SolveMaze(maze2, X_START, Y_START);
 
 
         }
@@ -88,8 +90,20 @@ namespace cis237assignment2
         /// <returns>transposedMaze</returns>
         static char[,] transposeMaze(char[,] mazeToTranspose)
         {
+            int xMazeToTransposeLength = mazeToTranspose.GetLength(0);
+            int yMazeToTransposeLength = mazeToTranspose.GetLength(1);
+            char[,] tranposedMaze = new char[yMazeToTransposeLength, xMazeToTransposeLength];
+
+            for (int x = 0; x < xMazeToTransposeLength; x++)
+            {
+                for (int y = 0; y < yMazeToTransposeLength; y++)
+                {
+                    tranposedMaze[y, x] = mazeToTranspose[x, y];
+                }
+            }
+           
             //Write code her to create a transposed maze.
-            return new char[1, 1];
+            return tranposedMaze;
         }
     }
 }
