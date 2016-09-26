@@ -22,8 +22,10 @@ namespace cis237assignment2
         /// Class level memeber variable for the mazesolver class
         /// </summary>
         char[,] maze;
+        char[,] printMaze;
         int xStart;
         int yStart;
+        UserInterface ui = new UserInterface();
 
         /// <summary>
         /// Default Constuctor to setup a new maze solver.
@@ -46,6 +48,11 @@ namespace cis237assignment2
             this.xStart = xStart;
             this.yStart = yStart;
 
+            printMaze = this.maze;
+            Console.WriteLine("Original Maze");
+            ui.PrintCompleteMaze(this.maze);
+
+            mazeTraversal(printMaze, this.xStart, this.xStart);
             //Do work needed to use mazeTraversal recursive call and solve the maze.
         }
 
@@ -55,8 +62,35 @@ namespace cis237assignment2
         /// Feel free to change the return type if you like, or pass in parameters that you might need.
         /// This is only a very small starting point.
         /// </summary>
-        private void mazeTraversal()
+        private void mazeTraversal(char[,] maze, int xPosition, int yPosition)
         {
+            bool exited = false;
+
+            if (!exited)
+            {
+                if (maze[xPosition,yPosition] == '.' )
+                {
+                    maze[xPosition, yPosition] = 'X';
+
+                    Console.WriteLine($"X Position = {xPosition}; Y Position = {yPosition}; ");
+                    ui.PrintCompleteMaze(maze);
+                    if (xPosition == 0 || yPosition == 0 || xPosition == (maze.GetLength(0) -1) || yPosition == (maze.GetLength(1) - 1))
+                    {
+                        Console.WriteLine("Complete");
+                        exited = true;
+                    }
+                    else
+                    {
+                        mazeTraversal(maze, xPosition, yPosition + 1);
+                        mazeTraversal(maze, xPosition, yPosition - 1);
+                        mazeTraversal(maze, xPosition + 1, yPosition);
+                        mazeTraversal(maze, xPosition - 1, yPosition);
+                    }
+                }
+            }
+
+
+
             //Implement maze traversal recursive call
         }
     }

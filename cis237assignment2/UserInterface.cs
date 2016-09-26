@@ -27,7 +27,7 @@ namespace cis237assignment2
                 }
                 outputString += Environment.NewLine;
             }
-            Console.WriteLine(outputString + Environment.NewLine);
+            Console.WriteLine(outputString +Environment.NewLine);
         }
     }
 }

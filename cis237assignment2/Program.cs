@@ -25,7 +25,6 @@ namespace cis237assignment2
             //Instanciating classes
             //***********************************
 
-            UserInterface ui = new UserInterface();
 
             /// <summary>
             /// Starting Coordinates.
@@ -66,9 +65,8 @@ namespace cis237assignment2
             mazeSolver.SolveMaze(maze1, X_START, Y_START);
 
             //Solve the transposed maze.
-            mazeSolver.SolveMaze(maze2, X_START, Y_START);
+         //   mazeSolver.SolveMaze(maze2, X_START, Y_START);
 
-            ui.PrintCompleteMaze(maze1);
 
         }
 
