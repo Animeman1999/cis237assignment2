@@ -48,6 +48,8 @@ namespace cis237assignment2
             this.xStart = xStart;
             this.yStart = yStart;
 
+            ui.StartConsole();
+
             printMaze = this.maze;
             Console.WriteLine("Original Maze");
             ui.PrintCompleteMaze(this.maze);
@@ -65,6 +67,8 @@ namespace cis237assignment2
         private void mazeTraversal(char[,] maze, int xPosition, int yPosition)
         {
             bool exited = false;
+            int xLength = maze.GetLength(0);
+            int yLength = maze.GetLength(1);
 
             if (!exited)
             {
@@ -73,8 +77,17 @@ namespace cis237assignment2
                     maze[xPosition, yPosition] = 'X';
 
                     Console.WriteLine($"X Position = {xPosition}; Y Position = {yPosition}; ");
+                    Console.WriteLine($"X Length = {xLength}; Y Length = {yLength};");
+                    if (exited)
+                    {
+                        Console.WriteLine("True");
+                    }
+                    else
+                    {
+                        Console.WriteLine("False");
+                    }
                     ui.PrintCompleteMaze(maze);
-                    if (xPosition == 0 || yPosition == 0 || xPosition == (maze.GetLength(0) -1) || yPosition == (maze.GetLength(1) - 1))
+                    if (xPosition == 0 || yPosition == 0 || xPosition == xLength - 1 || yPosition == yLength - 1)
                     {
                         Console.WriteLine("Complete");
                         exited = true;

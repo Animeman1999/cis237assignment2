@@ -29,5 +29,11 @@ namespace cis237assignment2
             }
             Console.WriteLine(outputString +Environment.NewLine);
         }
+
+        public void StartConsole()
+        {
+            Console.BufferHeight = Int16.MaxValue - 1;
+            Console.WriteLine("Maze Bot");
+        }
     }
 }
