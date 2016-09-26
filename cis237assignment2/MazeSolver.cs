@@ -26,6 +26,7 @@ namespace cis237assignment2
         int xStart;
         int yStart;
         UserInterface ui = new UserInterface();
+        bool exited;
 
         /// <summary>
         /// Default Constuctor to setup a new maze solver.
@@ -47,6 +48,8 @@ namespace cis237assignment2
             this.maze = maze;
             this.xStart = xStart;
             this.yStart = yStart;
+            exited = false;
+
 
             ui.StartConsole();
 
@@ -66,7 +69,7 @@ namespace cis237assignment2
         /// </summary>
         private void mazeTraversal(char[,] maze, int xPosition, int yPosition)
         {
-            bool exited = false;
+            //bool exited = false;
             int xLength = maze.GetLength(0);
             int yLength = maze.GetLength(1);
 
@@ -95,9 +98,13 @@ namespace cis237assignment2
                     else
                     {
                         mazeTraversal(maze, xPosition, yPosition + 1);
+
                         mazeTraversal(maze, xPosition, yPosition - 1);
+
                         mazeTraversal(maze, xPosition + 1, yPosition);
+
                         mazeTraversal(maze, xPosition - 1, yPosition);
+
                     }
                 }
             }
