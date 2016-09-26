@@ -69,7 +69,7 @@ namespace cis237assignment2
         /// </summary>
         private void mazeTraversal(char[,] maze, int xPosition, int yPosition)
         {
-            //bool exited = false;
+            
             int xLength = maze.GetLength(0);
             int yLength = maze.GetLength(1);
 
