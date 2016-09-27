@@ -69,37 +69,37 @@ namespace cis237assignment2
         /// </summary>
         private void mazeTraversal(char[,] maze, int xPosition, int yPosition)
         {
-            
+            // Variables that hold the lengths of the array to make the if statement more readable
             int xLength = maze.GetLength(0);
             int yLength = maze.GetLength(1);
 
-            if (!exited)
+            if (!exited) //Continue the recursion until the exit is found.
             {
-                if (maze[xPosition,yPosition] == '.' )
+                if (maze[xPosition,yPosition] == '.' )// Used to find the path.
+                    
                 {
-                    maze[xPosition, yPosition] = 'X';
+                    maze[xPosition, yPosition] = 'X';// Place an "X" on the path.
+                    
+                    ui.PrintCompleteMaze(maze); // Print out the new path.
 
-                    Console.WriteLine($"X Position = {xPosition}; Y Position = {yPosition}; ");
-
-                    ui.PrintCompleteMaze(maze);
+                    //Find out if on the exit.
                     if (xPosition == 0 || yPosition == 0 || xPosition == xLength - 1 || yPosition == yLength - 1)
                     {
-                        Console.WriteLine("Complete");
                         exited = true;
                     }
                     else
-                    {
-                        mazeTraversal(maze, xPosition, yPosition + 1);
+                    {   //Since maze has not been exited try another direction.
 
-                        mazeTraversal(maze, xPosition, yPosition - 1);
+                        mazeTraversal(maze, xPosition, yPosition + 1); //Try going right
 
-                        mazeTraversal(maze, xPosition + 1, yPosition);
+                        mazeTraversal(maze, xPosition, yPosition - 1);//Try going left
 
-                        mazeTraversal(maze, xPosition - 1, yPosition);
+                        mazeTraversal(maze, xPosition + 1, yPosition);//Try going up
 
-                        maze[xPosition, yPosition] = 'O';
+                        mazeTraversal(maze, xPosition - 1, yPosition);//Try going down
 
-                    }
+                        maze[xPosition, yPosition] = 'O';//Change the wrong path to "0"
+                                            }
                 }
             }
 

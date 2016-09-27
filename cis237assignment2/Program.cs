@@ -22,7 +22,7 @@ namespace cis237assignment2
         {
 
             //***********************************
-            //Instanciating classes
+            //Instanciating class Used
             //***********************************
             UserInterface ui = new UserInterface();
 
@@ -64,10 +64,14 @@ namespace cis237assignment2
             /// </summary>
             mazeSolver.SolveMaze(maze1, X_START, Y_START);
 
-            ui.Pause();
+            //Pause for user to look over the maze
+            ui.ExitFound();
 
             //Solve the transposed maze.
             mazeSolver.SolveMaze(maze2, X_START, Y_START);
+
+            //Pause for the user to look over the maze
+            ui.ExitFound();
 
 
         }
@@ -90,19 +94,23 @@ namespace cis237assignment2
         /// <returns>transposedMaze</returns>
         static char[,] transposeMaze(char[,] mazeToTranspose)
         {
+            //Create variables that hold the length of the X and Y lengths of the mazeToTranspose
             int xMazeToTransposeLength = mazeToTranspose.GetLength(0);
             int yMazeToTransposeLength = mazeToTranspose.GetLength(1);
+
+            //Create an array to hold the transposed maze.  It X and Y lengths are the opposite of the array sent in.
             char[,] tranposedMaze = new char[yMazeToTransposeLength, xMazeToTransposeLength];
 
+
+            //Go through all of the X and y indexes
             for (int x = 0; x < xMazeToTransposeLength; x++)
             {
                 for (int y = 0; y < yMazeToTransposeLength; y++)
                 {
+                    // By transposing the X and Y cordinates the array will be transposed.
                     tranposedMaze[y, x] = mazeToTranspose[x, y];
                 }
             }
-           
-            //Write code her to create a transposed maze.
             return tranposedMaze;
         }
     }

@@ -18,10 +18,12 @@ namespace cis237assignment2
         /// <param name="Maze"></param>
         public void PrintCompleteMaze(char[,] Maze)
         {
+            // Loops through the X,Y index of the Array and outputs its data.
             for ( int x = 0; x < Maze.GetLength(0); x++ )
             {
                 for (int y = 0; y < Maze.GetLength(1); y++)
                 {
+                    //Colorizes the maze based on thetype of character.
                     char tempChar = Maze[x, y];
                     switch (tempChar)
                     {
@@ -42,14 +44,21 @@ namespace cis237assignment2
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Starts the console and increase the verticle buffer.
+        /// </summary>
         public void StartConsole()
         {
             Console.BufferHeight = Int16.MaxValue - 1;
             Console.WriteLine("Maze Bot");
         }
 
-        public void Pause()
+        /// <summary>
+        /// Gives Exit Found message and pauses the program.
+        /// </summary>
+        public void ExitFound()
         {
+            Console.WriteLine("Exit found!");
             Console.WriteLine("Press any key to continue. . .");
             ConsoleKeyInfo inputChar = Console.ReadKey();
         }
