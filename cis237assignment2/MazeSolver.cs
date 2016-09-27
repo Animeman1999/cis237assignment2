@@ -80,7 +80,6 @@ namespace cis237assignment2
                     maze[xPosition, yPosition] = 'X';
 
                     Console.WriteLine($"X Position = {xPosition}; Y Position = {yPosition}; ");
-                    Console.WriteLine($"X Length = {xLength}; Y Length = {yLength};");
 
                     ui.PrintCompleteMaze(maze);
                     if (xPosition == 0 || yPosition == 0 || xPosition == xLength - 1 || yPosition == yLength - 1)

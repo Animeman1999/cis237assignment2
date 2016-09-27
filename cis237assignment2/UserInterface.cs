@@ -18,16 +18,28 @@ namespace cis237assignment2
         /// <param name="Maze"></param>
         public void PrintCompleteMaze(char[,] Maze)
         {
-            string outputString = "";
             for ( int x = 0; x < Maze.GetLength(0); x++ )
             {
                 for (int y = 0; y < Maze.GetLength(1); y++)
                 {
-                    outputString += Maze[x, y].ToString();
+                    char tempChar = Maze[x, y];
+                    switch (tempChar)
+                    {
+                        case 'X':
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            break;
+                        case 'O':
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            break;
+                        default:
+                            Console.ForegroundColor = ConsoleColor.White;
+                            break;
+                    }
+                    Console.Write(tempChar + " ");
                 }
-                outputString += Environment.NewLine;
+                Console.WriteLine();
             }
-            Console.WriteLine(outputString +Environment.NewLine);
+            Console.WriteLine();
         }
 
         public void StartConsole()
