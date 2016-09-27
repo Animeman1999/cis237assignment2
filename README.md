@@ -44,5 +44,6 @@ Don't forget that you must have a base case for your recursive method or you wil
 ## Outside Resources Used
 https://www.daniweb.com/programming/software-development/threads/475572/changing-color-of-font-within-a-single-console-writeline
 
+http://stackoverflow.com/questions/5449956/how-to-add-a-delay-for-a-2-or-3-seconds
 ## Known Problems, Issues, And/Or Errors in the Program
 None

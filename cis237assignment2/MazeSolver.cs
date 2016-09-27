@@ -49,15 +49,16 @@ namespace cis237assignment2
             this.xStart = xStart;
             this.yStart = yStart;
             exited = false;
+            int mazePrintChoice = 1;
 
-
-            ui.StartConsole();
+            //Get users input for type of output of the maze.  Placed here so that the user can choose a different type of output for each maze.
+            mazePrintChoice= ui.StartConsole();
 
             printMaze = this.maze;
             Console.WriteLine("Original Maze");
-            ui.PrintCompleteMaze(this.maze);
+            ui.PrintMaze(this.maze, mazePrintChoice);
 
-            mazeTraversal(printMaze, this.xStart, this.xStart);
+            mazeTraversal(printMaze, this.xStart, this.xStart, mazePrintChoice);
             //Do work needed to use mazeTraversal recursive call and solve the maze.
         }
 
@@ -67,7 +68,7 @@ namespace cis237assignment2
         /// Feel free to change the return type if you like, or pass in parameters that you might need.
         /// This is only a very small starting point.
         /// </summary>
-        private void mazeTraversal(char[,] maze, int xPosition, int yPosition)
+        private void mazeTraversal(char[,] maze, int xPosition, int yPosition, int printChoice)
         {
             // Variables that hold the lengths of the array to make the if statement more readable
             int xLength = maze.GetLength(0);
@@ -80,7 +81,7 @@ namespace cis237assignment2
                 {
                     maze[xPosition, yPosition] = 'X';// Place an "X" on the path.
                     
-                    ui.PrintCompleteMaze(maze); // Print out the new path.
+                    ui.PrintMaze(maze, printChoice); // Print out the new path.
 
                     //Find out if on the exit.
                     if (xPosition == 0 || yPosition == 0 || xPosition == xLength - 1 || yPosition == yLength - 1)
@@ -90,19 +91,19 @@ namespace cis237assignment2
                     else
                     {   //Since maze has not been exited try another direction.
 
-                        mazeTraversal(maze, xPosition, yPosition + 1); //Try going right
+                        mazeTraversal(maze, xPosition, yPosition + 1, printChoice); //Try going right
 
-                        mazeTraversal(maze, xPosition, yPosition - 1);//Try going left
+                        mazeTraversal(maze, xPosition, yPosition - 1, printChoice);//Try going left
 
-                        mazeTraversal(maze, xPosition + 1, yPosition);//Try going up
+                        mazeTraversal(maze, xPosition + 1, yPosition, printChoice);//Try going up
 
-                        mazeTraversal(maze, xPosition - 1, yPosition);//Try going down
+                        mazeTraversal(maze, xPosition - 1, yPosition, printChoice);//Try going down
 
                         if (!exited)
                         {//Stops the overwriting of the path taken as the recursion unwinds after exiting.
                             maze[xPosition, yPosition] = 'O';//Change the wrong path to "0"
 
-                            ui.PrintCompleteMaze(maze);
+                            ui.PrintMaze(maze, printChoice);
                         }
 
                                             }

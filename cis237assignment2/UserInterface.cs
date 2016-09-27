@@ -10,10 +10,25 @@ using System.Threading.Tasks;
 
 namespace cis237assignment2
 {
+    /// <summary>
+    /// Takes the printChoice and prints out the Maze format chosen.
+    /// </summary>
     class UserInterface
     {
+        public void PrintMaze(char[,] Maze, int PrintChoice)
+        {
+            if (PrintChoice == 1)
+            {
+                PrintCompleteMaze(Maze);
+            }
+            else
+            {
+                PrintMazeOverwrite(Maze);
+            }
+        }
+
         /// <summary>
-        /// Prints Complete Maze
+        /// Prints Complete Maze List
         /// </summary>
         /// <param name="Maze"></param>
         public void PrintCompleteMaze(char[,] Maze)
@@ -45,13 +60,40 @@ namespace cis237assignment2
         }
 
         /// <summary>
-        /// Starts the console and increase the verticle buffer.
+        /// Prints Overwrite of the Maze
         /// </summary>
-        public void StartConsole()
+        /// <param name="Maze"></param>
+        public void PrintMazeOverwrite(char[,] Maze)
         {
-            Console.BufferHeight = Int16.MaxValue - 1;
-            Console.WriteLine("Maze Bot");
+            Console.Clear();
+            PrintCompleteMaze(Maze);
+            System.Threading.Thread.Sleep(500);
+
         }
+        /// <summary>
+        /// Prints a start menu and gets input
+        /// </summary>
+        public int StartConsole()
+        {
+            Console.BufferHeight = Int16.MaxValue /20;
+            Console.WriteLine("Maze Bot");
+            Console.WriteLine();
+            string startMenu = "Start Menu" + Environment.NewLine + "1) Print the mazes as a list of step." +
+                                Environment.NewLine + "2) Print a single maze following the progress inside." +
+                                Environment.NewLine + "Enter the number of the item you wish to do.";
+            Console.Write(startMenu);
+            ConsoleKeyInfo inputChar = Console.ReadKey();
+            Console.WriteLine();
+            while (inputChar.KeyChar !='1' && inputChar.KeyChar !='2')
+            {
+                Console.WriteLine("Invalid Entry please try again");
+                Console.Write(startMenu);
+                inputChar = Console.ReadKey();
+                Console.WriteLine();
+            }
+            return int.Parse(inputChar.KeyChar.ToString());
+        }
+
 
         /// <summary>
         /// Gives Exit Found message and pauses the program.
@@ -61,6 +103,7 @@ namespace cis237assignment2
             Console.WriteLine("Exit found!");
             Console.WriteLine("Press any key to continue. . .");
             ConsoleKeyInfo inputChar = Console.ReadKey();
+
         }
     }
 }
