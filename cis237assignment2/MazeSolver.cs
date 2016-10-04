@@ -99,11 +99,12 @@ namespace cis237assignment2
 
                         mazeTraversal(maze, xPosition - 1, yPosition, printChoice);//Try going down
 
-                        if (!exited)
-                        {//Stops the overwriting of the path taken as the recursion unwinds after exiting.
-                            maze[xPosition, yPosition] = 'O';//Change the wrong path to "0"
 
-                            ui.PrintMaze(maze, printChoice);
+                        if (!exited)//Stops the overwriting of the path taken as the recursion unwinds after exiting.
+                        {
+                            maze[xPosition, yPosition] = 'O';//Change the wrong path to "O"
+
+                            ui.PrintMaze(maze, printChoice); //Print out the change from "X" to "O"
                         }
 
                                             }
